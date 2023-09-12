@@ -5,11 +5,15 @@ import AddPost from './commponents/pages/AddPost/AddPost';
 import EditPost from './commponents/pages/EditPost/EditPost';
 import About from './commponents/pages/About/About';
 import NotFound from './commponents/pages/NotFound/NotFound';
+import Header from './commponents/views/Header/Header';
+import Footer from './commponents/views/Footer/Footer';
+import { Container } from 'react-bootstrap';
 
 
 const App = () => {
   return (
-    <main>
+    <Container>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/post/:id" element={<Post />} />
@@ -18,7 +22,8 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </main>
+      <Footer />
+    </Container>
   );
 }
 
