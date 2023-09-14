@@ -6,38 +6,68 @@ import { Card } from "react-bootstrap";
 import { Stack } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { useState } from "react";
+import { Modal } from "react-bootstrap";
+import { useDispatch } from 'react-redux';
+import { removePost } from "../../../redux/postsRedux";
 
 const PostSelected = () =>{
 
     const { postId } = useParams();
     const postData = useSelector(state => getPostById(state, postId));
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const dispatch = useDispatch();
+
+    const handleRemove = e => {
+        e.preventDefault();
+        dispatch(removePost(postData.id));
+    }
+
     if(!postData) return <Navigate to="/" />
 
     else return (
-        <Card className="mx-auto" style={{ minWidth: '300px', maxWidth: '800px' }} border="light">
-            <Card.Body>
-                <Stack direction="horizontal" gap={2} className='mb-4'>
-                    <Card.Title className='mb-0'>
-                        <h2>{postData.title}</h2>
-                    </Card.Title>
-                    <NavLink to={"/post/edit/" + postData.id} className="ms-auto">
-                        <Button variant="outline-info">Edit</Button>
-                    </NavLink>
-                    <Button variant="outline-danger">Delete</Button>
-                </Stack>
-                <Stack direction="horizontal" gap={1}>
-                    <Card.Subtitle>Author: </Card.Subtitle>
-                    <Card.Text>{postData.author}</Card.Text>
-                </Stack>
-                <Stack direction="horizontal" gap={1} className="mb-2">
-                    <Card.Subtitle>Published: </Card.Subtitle>
-                    <Card.Text>{postData.publishedDate}</Card.Text>
-                </Stack>
-                <Card.Text>{postData.content}</Card.Text>
-            </Card.Body>
-        </Card>
+        <article>
+            <Card className="mx-auto" style={{ minWidth: '300px', maxWidth: '800px' }} border="light">
+                <Card.Body>
+                    <Stack direction="horizontal" gap={2} className='mb-4'>
+                        <Card.Title className='mb-0'>
+                            <h2>{postData.title}</h2>
+                        </Card.Title>
+                        <NavLink to={"/post/edit/" + postData.id} className="ms-auto">
+                            <Button variant="outline-info">Edit</Button>
+                        </NavLink>
+                        <Button variant="outline-danger" onClick={handleShow}>Delete</Button>
+                    </Stack>
+                    <Stack direction="horizontal" gap={1}>
+                        <Card.Subtitle>Author: </Card.Subtitle>
+                        <Card.Text>{postData.author}</Card.Text>
+                    </Stack>
+                    <Stack direction="horizontal" gap={1} className="mb-2">
+                        <Card.Subtitle>Published: </Card.Subtitle>
+                        <Card.Text>{postData.publishedDate}</Card.Text>
+                    </Stack>
+                    <Card.Text>{postData.content}</Card.Text>
+                </Card.Body>
+            </Card>
 
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    This operation will completely remove this post from app.
+                    <p> Are you sure, you want to do that?</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>Cancel</Button>
+                    <Button variant="danger" onClick={handleRemove}>Remove</Button>
+                </Modal.Footer>
+            </Modal>
+        </article>
         )
 }
 
