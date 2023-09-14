@@ -2,7 +2,7 @@ import PostSelected from "../../features/PostSelected/PostSelected";
 
 const Post = () =>{
     return (
-        <section id="post">
+        <section>
             <PostSelected />
         </section>
     )
