@@ -37,7 +37,7 @@ const PostSelected = () =>{
                         <Card.Title className='mb-0'>
                             <h2>{postData.title}</h2>
                         </Card.Title>
-                        <NavLink to={"/post/edit/" + postData.id} className="ms-auto">
+                        <NavLink to={"/post/edit/" + postId} className="ms-auto">
                             <Button variant="outline-info">Edit</Button>
                         </NavLink>
                         <Button variant="outline-danger" onClick={handleShow}>Delete</Button>
