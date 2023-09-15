@@ -14,7 +14,7 @@ const AllPosts = () => {
         <article>
             <Row lg={3}>
                 {posts.map(post => 
-                    <Col key={posts.id}>
+                    <Col key={post.id}>
                         <Card className="mr-2 mb-3" style={{ minWidth: '18rem' }}>
                             <Card.Body>
                                 <Card.Title>{post.title}</Card.Title>

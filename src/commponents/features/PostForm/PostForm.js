@@ -1,4 +1,4 @@
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
@@ -44,8 +44,9 @@ const PostForm = ({ action, actionText, ...props }) => {
     )
 }
 
-/* PostForm.propTypes = {
-    actionText: propTypes.string.isRequired;
-} */
+PostForm.propTypes = {
+    actionText: PropTypes.string.isRequired,
+    action: PropTypes.func.isRequired,
+} 
 
 export default PostForm;
