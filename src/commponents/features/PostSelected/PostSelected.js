@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useDispatch } from 'react-redux';
 import { removePost } from "../../../redux/postsRedux";
+import { dateToStr } from "../../../utils/dateToStr";
 
 const PostSelected = () =>{
 
@@ -48,9 +49,9 @@ const PostSelected = () =>{
                     </Stack>
                     <Stack direction="horizontal" gap={1} className="mb-2">
                         <Card.Subtitle>Published: </Card.Subtitle>
-                        <Card.Text>{postData.publishedDate}</Card.Text>
+                        <Card.Text>{dateToStr(postData.publishedDate)}</Card.Text>
                     </Stack>
-                    <Card.Text>{postData.content}</Card.Text>
+                    <Card.Text dangerouslySetInnerHTML={{ __html: postData.content }} />
                 </Card.Body>
             </Card>
 

@@ -5,6 +5,7 @@ import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Stack } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { dateToStr } from "../../../utils/dateToStr";
 
 const AllPosts = () => {
 
@@ -24,7 +25,7 @@ const AllPosts = () => {
                                 </Stack>
                                 <Stack direction="horizontal" gap={1} className="mb-2">
                                     <Card.Subtitle>Published: </Card.Subtitle>
-                                    <Card.Text>{post.publishedDate}</Card.Text>
+                                    <Card.Text>{dateToStr(post.publishedDate)}</Card.Text>
                                 </Stack>
                                 <Card.Text>{post.shortDescription}</Card.Text>
                                 <NavLink to={"/post/" + post.id}>
