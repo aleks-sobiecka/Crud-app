@@ -23,9 +23,13 @@ const AllPosts = () => {
                                     <Card.Subtitle>Author: </Card.Subtitle>
                                     <Card.Text>{post.author}</Card.Text>
                                 </Stack>
-                                <Stack direction="horizontal" gap={1} className="mb-2">
+                                <Stack direction="horizontal" gap={1}>
                                     <Card.Subtitle>Published: </Card.Subtitle>
                                     <Card.Text>{dateToStr(post.publishedDate)}</Card.Text>
+                                </Stack>
+                                <Stack direction="horizontal" gap={1} className="mb-2">
+                                    <Card.Subtitle>Category: </Card.Subtitle>
+                                    <Card.Text>{post.category}</Card.Text>
                                 </Stack>
                                 <Card.Text>{post.shortDescription}</Card.Text>
                                 <NavLink to={"/post/" + post.id}>

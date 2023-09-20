@@ -47,9 +47,13 @@ const PostSelected = () =>{
                         <Card.Subtitle>Author: </Card.Subtitle>
                         <Card.Text>{postData.author}</Card.Text>
                     </Stack>
-                    <Stack direction="horizontal" gap={1} className="mb-2">
+                    <Stack direction="horizontal" gap={1}>
                         <Card.Subtitle>Published: </Card.Subtitle>
                         <Card.Text>{dateToStr(postData.publishedDate)}</Card.Text>
+                    </Stack>
+                    <Stack direction="horizontal" gap={1} className="mb-2">
+                        <Card.Subtitle>Category: </Card.Subtitle>
+                        <Card.Text>{postData.category}</Card.Text>
                     </Stack>
                     <Card.Text dangerouslySetInnerHTML={{ __html: postData.content }} />
                 </Card.Body>
