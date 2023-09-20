@@ -36,24 +36,24 @@ const PostForm = ({ action, actionText, ...props }) => {
     
     return (
         <Form onSubmit={validate(handleSubmit)} className="">
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" style={{ width: '300px' }}>
+            <Form.Group className="mb-3" controlId="title" style={{ width: '300px' }}>
                 <Form.Label>Title</Form.Label>
                 <Form.Control {...register("title", { required: true, minLength: 3 })} 
                     type="text" placeholder="Enter title" value={title} onChange={e => setTitle(e.target.value)} />
                 {errors.title && <small className="d-block form-text text-danger mt-2">Title is too short (min is 3)</small>}
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" style={{ width: '300px' }}>
+            <Form.Group className="mb-3" controlId="author" style={{ width: '300px' }}>
                 <Form.Label>Author</Form.Label>
-                <Form.Control {...register("title", { required: true, minLength: 3 })} 
+                <Form.Control {...register("author", { required: true, minLength: 3 })} 
                     type="text" placeholder="Enter author" value={author} onChange={e => setAuthor(e.target.value)} />
-                {errors.title && <small className="d-block form-text text-danger mt-2">Author is too short (min is 3)</small>}
+                {errors.author && <small className="d-block form-text text-danger mt-2">Author is too short (min is 3)</small>}
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" style={{ width: '300px' }}>
+            <Form.Group className="mb-3" controlId="published" style={{ width: '300px' }}>
                 <Form.Label>Published</Form.Label><br />
                 <ReactDatePicker placeholder="mm/dd/yyyy" selected={publishedDate} onChange={(date) => setPublishedDate(date)} />
                 {contentError && <small className="d-block form-text text-danger mt-2">This field is required</small>}
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" style={{ width: '300px' }}>
+            <Form.Group className="mb-3" controlId="category" style={{ width: '300px' }}>
                 <Form.Label>Category</Form.Label>
                 <Form.Select {...register("item", { required: true })} 
                 aria-label="Default select example" value={category} onChange={e => setCategory(e.target.value) }>
@@ -64,13 +64,13 @@ const PostForm = ({ action, actionText, ...props }) => {
                 </Form.Select>
                 {errors.item && <small className="d-block form-text text-danger mt-2">Select category</small>}
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" style={{ minWidth: '300px' }}>
+            <Form.Group className="mb-3" controlId="description" style={{ minWidth: '300px' }}>
                 <Form.Label>Short description</Form.Label>
-                <Form.Control {...register("title", { required: true, minLength: 20 })} 
+                <Form.Control {...register("shortDescription", { required: true, minLength: 20 })} 
                 as="textarea" rows={3} placeholder="Leave a comment here" value={shortDescription} onChange={e => setShortDescription(e.target.value)} />
-                {errors.title && <small className="d-block form-text text-danger mt-2">Description is too short (min is 20)</small>}
+                {errors.shortDescription && <small className="d-block form-text text-danger mt-2">Description is too short (min is 20)</small>}
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" style={{ minWidth: '300px' }}>
+            <Form.Group className="mb-3" controlId="content" style={{ minWidth: '300px' }}>
                 <Form.Label>Main content</Form.Label>
                 <ReactQuill theme="snow" value={content} onChange={setContent} />
                 {contentError && <small className="d-block form-text text-danger mt-2">This field is required</small>}
