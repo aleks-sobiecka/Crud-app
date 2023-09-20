@@ -25,7 +25,7 @@ const initialState = {
             content: 'Main content of the article',
             publishedDate: new Date('03-09-2023'),
             author: 'John Doe',
-            category: 'News',
+            category: 'Sport',
         },
         {
             id: '4',
